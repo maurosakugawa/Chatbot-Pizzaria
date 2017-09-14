@@ -291,3 +291,12 @@ tr:hover .deleteBtn {
 		    border-style: solid;
 		    border-color: #e6e6e6;
 		}
+
+		.esconde {
+			visibility: visible;
+		}
+
+		.mostra {
+			
+			visibility: hidden;
+		}
