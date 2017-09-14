@@ -61,7 +61,7 @@ function userMessage(message) {
             text = response.output.text; // Only display the first response
             context = response.context; // Store the context for next round of questions
             console.log("Got response from Watson: ", JSON.stringify(response));
-            document.getElementById('wordInput').value = text;
+            // document.getElementById('wordInput').value = text;
             document.getElementById('po').value = context.nome;
             document.getElementById('card-type').value = context.sabor;
             document.getElementById('global-filters').value = context.tipo_de_massa;
@@ -72,12 +72,12 @@ function userMessage(message) {
         }
         else {
             console.error('Server error for Conversation. Return status of: ', xhr.statusText);
-            displayMessage("Putz, deu um tilt aqui. Você pode tentar novamente.", watson);
+            displayMessage("Ops, my bad, there is something wrong, let me ask the work students to take a look. Can you say that again, please?", watson);
         }
     };
     xhr.onerror = function () {
         console.error('Network error trying to send message!');
-        displayMessage("Ops, acho que meu cérebro está offline. Espera um minutinho para continuarmos por favor.", watson);
+        displayMessage("Hmmm looks like my brain is offline. Give me a minute to open the refrigerator and we can continue.", watson);
     };
     console.log(JSON.stringify(params));
     xhr.send(JSON.stringify(params));
