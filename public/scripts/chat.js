@@ -61,7 +61,7 @@ function userMessage(message) {
             text = response.output.text; // Only display the first response
             context = response.context; // Store the context for next round of questions
             console.log("Got response from Watson: ", JSON.stringify(response));
-            document.getElementById('wordInput').value = text;
+            // document.getElementById('wordInput').value = text;
             document.getElementById('po').value = context.nome;
             document.getElementById('card-type').value = context.sabor;
             document.getElementById('global-filters').value = context.tipo_de_massa;

@@ -67,8 +67,8 @@ function($scope, $timeout, FingerSpellingService) {
 
     if(isValidASLCharacter(newLetters[0])) {
       $scope.imgSrc = 'data:image/png;base64,' + FingerSpellingService.images[newLetters[0]];
-      var wordInput = document.getElementById('wordInput');
-      wordInput.setSelectionRange(0, 1);
+      var chatInput = document.getElementById('chatInput');
+      chatInput.setSelectionRange(0, 1);
     }
 
     if (newLetters[1]) {
@@ -92,8 +92,8 @@ function($scope, $timeout, FingerSpellingService) {
       $('#handImage').css('opacity', '1');
       $scope.imgSrc = 'data:image/png;base64,' + FingerSpellingService.images[newLetters[index]];
 
-      var wordInput = document.getElementById('wordInput');
-      wordInput.setSelectionRange(index, index + 1);
+      var chatInput = document.getElementById('chatInput');
+      chatInput.setSelectionRange(index, index + 1);
 
       index = index + 1;
       if (newLetters[index]) {
@@ -106,7 +106,7 @@ function($scope, $timeout, FingerSpellingService) {
       else {
         currentTimeout = $timeout(function() {
           $scope.showPlayButton = true;
-          wordInput.setSelectionRange(newLetters.length, newLetters.length);
+          chatInput.setSelectionRange(newLetters.length, newLetters.length);
         }, $scope.medium);
       }
     }, $scope.speed);

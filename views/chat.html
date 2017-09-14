@@ -15,12 +15,10 @@
 <body ng-controller="MainController">
 
   <div class="row">
-
     <div class="col-md-9 col-sm-9">
-
       <div class="card">
           <div class="card-header">
-            Xumes Pizza
+            PO Requirements bot
           </div>
           <div class="card-body">
             <h4 class="card-title">Summary</h4>
@@ -44,19 +42,15 @@
                     <p class="card-text">Global Filters: <input id="global-filters" type="text" disabled></input></p>
                   </div>
                 </div>
-
-            
           </div>
         </div>
-
-
     </div>
 
     <div class="col-md-3  col-sm-3">
 
         <div class="card" >
             <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">LIBRAS</h6>
+              <h6 class="card-subtitle mb-2 text-muted">American Sign Language</h6>
               <div id="imageContainer hand-popup ">
                   <div id="handImage" ng-style="{'background-image':'url('+imgSrc+')'}"></div>
                   <span ng-show="showPlayButton">
@@ -66,17 +60,12 @@
             </div>
           </div>
 
-
-      
-
-
     </div>
   </div>
-
+<!-- 
   <div id="wordInputContainer">
     <input id="wordInput" type="text" ng-bind="letters" ng-model="letters" ></input>
-    
-  </div>
+  </div> -->
 
   <div class="chat-popup" id="chat-popup">
     <div class="chat-header" >Faça seu pedido</div>
@@ -84,7 +73,7 @@
                      <div class="chat-date"><span>{{CurrentDate | date:'HH:mm:ss'}}</span></div>
     </div>
     <div class="chat-footer"  id="wordInputContainer">
-      <input type="text" id="chatInput"   placeholder="Type a message..." onkeypress="return newEvent(event)" autofocus  />
+      <input type="text" id="chatInput"   placeholder="Type a message..." ng-model="letters" onkeypress="return newEvent(event)" autofocus  />
       <a href="javascript:;" class="send-btn"></a>
     </div>
   </div>
