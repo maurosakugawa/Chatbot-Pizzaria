@@ -9,7 +9,7 @@ body {
 }
 
 body {
-    background-image: url(../images/ibm.jpg);
+    background-image: url(../images/transparent.png);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -154,7 +154,7 @@ body {
     margin-bottom: 10px;
     font-size: 14px;
     max-width: 78%;
-    
+
 }
 
 

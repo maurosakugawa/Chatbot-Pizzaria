@@ -23,13 +23,13 @@ var conversationWorkspace, conversation;
 // Create the service wrapper
     conversation = watson.conversation({
         url: "https://gateway.watsonplatform.net/conversation/api"
-        , username: "<username>" // Replace <username>, including "<" and ">"
-        , password: "<password>" // Replace <password>, including "<" and ">"
+        , username: "31de9d99-cf32-49e7-8df6-17dcd2fb3dcd" // Replace <username>, including "<" and ">"
+        , password: "AIsEpPbbYhRz" // Replace <password>, including "<" and ">"
         , version_date: '2017-04-10'
         , version: 'v1'
     });
     // check if the workspace ID is specified in the environment
-    conversationWorkspace = "<workspace_id>"; // Replace <workspace_id>, including "<" and ">"
+    conversationWorkspace = "ee6d96b7-6872-4a71-a786-fe4d9a0002f3"; // Replace <workspace_id>, including "<" and ">"
     // if not, look it up by name or create one
 // Allow clients to interact
 
@@ -54,7 +54,7 @@ var chatbot = {
                         , context: context
                     };
                     //                chatLogs(owner, conv, res, () => {
-                    //                    return 
+                    //                    return
                     callback(null, res);
                     //                });
                 }
@@ -65,9 +65,18 @@ var chatbot = {
                                 console.log("Error in sending message: ", err);
                                 return callback(err);
                             }else{
-                                
+
                             var conv = data.context.conversation_id;
                             console.log("Got response from Ana: ", JSON.stringify(data));
+
+                            if (data.intents.length>0){
+                                console.log("Sua intenção é falar sobre: ", data.intents[0].intent);
+                                if (data.intents[0].intent === 'cardapio'){
+                                  data.output.text[0] = '<a href="www.reginaldo.online">cardapio</a>';
+                                  console.log("a resposta é: ", data.output.text[0]);
+                                }
+                            }
+
 //                            if (data.context.system.dialog_turn_counter > 1) {
 //                                chatLogs(owner, conv, data, () => {
 //                                    return callback(null, data);
@@ -174,7 +183,7 @@ function buildContextObject(req, callback) {
         , context: {}
     };
 
-    
+
     if (req.body.context) {
         context = req.body.context;
         params.context = context;

@@ -61,11 +61,14 @@ function userMessage(message) {
             text = response.output.text; // Only display the first response
             context = response.context; // Store the context for next round of questions
             console.log("Got response from Watson: ", JSON.stringify(response));
-           
+            document.getElementById('wordInput').value = text;
+            document.getElementById('po').value = context.nome;
+            document.getElementById('card-type').value = context.sabor;
+            document.getElementById('global-filters').value = context.tipo_de_massa;
+            
             for (var txt in text) {
-                displayMessage(text[txt], watson);
+                displayMessage(text[txt], watson)                
             }
-
         }
         else {
             console.error('Server error for Conversation. Return status of: ', xhr.statusText);
@@ -80,6 +83,10 @@ function userMessage(message) {
     xhr.send(JSON.stringify(params));
 }
 
+function simulateKeyPress(character) {
+    jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
+  }
+  
 function newEvent(event) {
     // Only check for a return/enter press - Event 13
     if (event.which === 13 || event.keyCode === 13) {

@@ -1,32 +1,93 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>IBM Digital Business Group</title>
-        <link rel="stylesheet" type="text/css" href="/style/custom.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/scripts/chat.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <div class="header"> 
-            <p></p>
+<html ng-app="aslFingerSpelling" ng-csp>
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza do Xumes</title>
+  <link rel="stylesheet" type="text/css" href="/style/custom.css"/>
+  <link rel="stylesheet" type="text/css" href="/style/style.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/scripts/chat.js" type="text/javascript"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="MainController">
+
+  <div class="row">
+
+    <div class="col-md-9 col-sm-9">
+
+      <div class="card">
+          <div class="card-header">
+            Xumes Pizza
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Summary</h4>
+
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                  <h4 class="card-title">Configuration</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">Variables</h6>
+                  <p>{{input-chat}}</p>
+                  <p>{{showPlayButton}}</p>
+                  <p>{{letters}}</p>
+                </div>
+              </div>
+
+              <div class="card" style="width: 20rem;">
+                  <div class="card-body">
+                    <h4 class="card-title">Requirement</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Copy and paste into Zenhub</h6>
+                    <p class="card-text">PO: <input id="po" type="text" disabled></input></p>
+                    <p class="card-text">Card Type: <input id="card-type" type="text" disabled></input></p>
+                    <p class="card-text">Global Filters: <input id="global-filters" type="text" disabled></input></p>
+                  </div>
+                </div>
+
+            
+          </div>
         </div>
-        <div class="main">
-            <p></p>
-        </div>
-        <div class="footer">
-            <p></p>
-        </div>
-        <div class="chat-popup" id="chat-popup">
-            <div class="chat-header" >Ask About Me</div>
-            <div class="chat-body" id="chat-body">
-<!--                <div class="chat-date"><span>Today, 2:22 PM</span></div>-->
+
+
+    </div>
+
+    <div class="col-md-3  col-sm-3">
+
+        <div class="card" >
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">LIBRAS</h6>
+              <div id="imageContainer hand-popup ">
+                  <div id="handImage" ng-style="{'background-image':'url('+imgSrc+')'}"></div>
+                  <span ng-show="showPlayButton">
+                    <div id="playButton"  ng-click="play()">&#9654;</div>
+                  </span>
+                </div>
             </div>
-            <div class="chat-footer">
-                <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="return newEvent(event)"/>
-                <a href="javascript:;" class="send-btn"></a>
-            </div>
-        </div>
-        
-    </body>
+          </div>
+
+
+      
+
+
+    </div>
+  </div>
+
+  <div id="wordInputContainer">
+    <input id="wordInput" type="text" ng-bind="letters" ng-model="letters" ></input>
+    
+  </div>
+
+  <div class="chat-popup" id="chat-popup">
+    <div class="chat-header" >Faça seu pedido</div>
+    <div class="chat-body" id="chat-body">
+                     <div class="chat-date"><span>{{CurrentDate | date:'HH:mm:ss'}}</span></div>
+    </div>
+    <div class="chat-footer"  id="wordInputContainer">
+      <input type="text" id="chatInput"   placeholder="Type a message..." onkeypress="return newEvent(event)" autofocus  />
+      <a href="javascript:;" class="send-btn"></a>
+    </div>
+  </div>
+
+</body>
 </html>

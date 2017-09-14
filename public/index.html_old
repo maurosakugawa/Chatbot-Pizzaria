@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html ng-app="aslFingerSpelling" ng-csp>
+
+	<head>
+		<title>ASL Fingerspelling App</title>
+		<meta name="Description" content="A free, simple, and beautiful ASL fingerspelling application.">
+		<link rel="icon" type="image/png" href="images/favicon2.png">
+		
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="app.js"></script>
+		<link rel="stylesheet" type="text/css" href="bower_components/angular/angular-csp.css" />
+		<!-- <script src="google-analytics.js"></script> -->
+	</head>
+
+	<body ng-controller="MainController">
+		
+		<div id="speedGroup">
+			<div id="speedLabel">speed: </div>
+			
+			<div id="speedLabelAndMenuGroup">
+				<div id="speedText" ng-click="showSpeedMenu = !showSpeedMenu">{{speedText}}</div>
+				<div id="speedMenu" ng-show="showSpeedMenu">
+					<div id="fastMenuItem" ng-click="speedMenuItemClick('fast')" ng-hide="speedText === 'fast'" class="speedMenuItem">fast</div>
+					<div id="mediumMenuItem" ng-click="speedMenuItemClick('medium')" ng-hide="speedText === 'medium'" class="speedMenuItem">medium</div>
+					<div id="slowMenuItem" ng-click="speedMenuItemClick('slow')" ng-hide="speedText === 'slow'" class="speedMenuItem">slow</div>
+				</div>
+			</div>
+		</div>
+	
+		<div id="imageContainer">
+			<div id="handImage" ng-style="{'background-image':'url('+imgSrc+')'}"></div>
+			<div id="playButton" ng-show="showPlayButton" ng-click="play()">&#9654;</div>
+		</div>
+		
+		<div id="wordInputContainer">
+			<input id="wordInput" type="text" placeholder="type word" autofocus ng-model="letters"></input>
+		</div>
+		
+		<!-- <a id="privacyPolicyButton" href="privacy-policy.html">Privacy Policy</a> -->
+	</body>
+
+	<style>
+	
+		html, body {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	
+		#speedGroup {
+			position: absolute;
+			top: 5%;
+			right: 25%;
+			z-index: 1;
+		}
+		
+		#speedLabel {
+			position: absolute;
+			font-family: Ubuntu, sans-serif;
+			color: darkgray;
+			font-size: 2.5em;
+			font-weight: bold;
+			cursor: default;
+		}
+		
+		#speedText {
+			font-family: Ubuntu, sans-serif;
+			font-size: 2em;
+			font-weight: bold;
+			color: darkgray;
+			margin-top: 7px;
+			cursor: pointer;
+			transition: color .3s ease-in-out;
+		}
+		
+		#speedText:hover {
+			color: black;
+		}
+		
+		#speedLabelAndMenuGroup {
+			position: absolute;
+			left: 140px;
+		}
+		
+		.speedMenuItem {
+			font-family: Ubuntu, sans-serif;
+			font-size: 2em;
+			font-weight: bold;
+			color: darkgray;
+			cursor: pointer;
+			transition: color .3s ease-in-out;
+		}
+		
+		.speedMenuItem:hover {
+			color: black;
+		}
+	
+		#playButton {
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transform: scale(10);
+			
+			color: rgba(169, 169, 169, 0.95);
+			text-shadow: 0 0 1px grey;
+			transition: text-shadow .3s ease-in-out;
+			cursor: pointer;
+		}
+		
+		#playButton:hover {
+			text-shadow: none;
+		}
+	
+		#imageContainer {
+			height: 70%;
+		}
+		
+		#handImage {
+			margin: 0 auto;
+			height: 60vh;
+			max-width: 60vh;
+			margin-top: 3%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			opacity: 1;
+			
+			transition: opacity .05s ease-in-out;
+		}
+		
+		#wordInputContainer {
+			height: 30%;
+			margin-left: 5%;
+		}
+		
+		#wordInput {
+			border: none;
+			width: 100%;
+			font-family: Ubuntu, sans-serif;
+			font-size: 15vh;
+		}
+		
+		#wordInput:focus {
+			outline: 0;
+		}
+		
+		#privacyPolicyButton {
+			color: grey;
+			font-family: Ubuntu, sans-serif;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			cursor: pointer;
+			text-decoration: none;
+		}
+	</style>
+</html>
