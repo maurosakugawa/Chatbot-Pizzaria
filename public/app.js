@@ -19,6 +19,9 @@ function($scope, $timeout, FingerSpellingService) {
   $scope.showPlayButton = false;
   $scope.showSpeedMenu = false;
   $scope.CurrentDate = new Date();
+  $scope.restaurantes = [];
+  $scope.mostraRestMtg = false;
+  $scope.mostraRest = false;
 
   window.setTimeout(function() {
     $scope.letters = $scope.letters + '.';
@@ -107,10 +110,81 @@ function($scope, $timeout, FingerSpellingService) {
         currentTimeout = $timeout(function() {
           $scope.showPlayButton = true;
           chatInput.setSelectionRange(newLetters.length, newLetters.length);
+          $scope.showWeather = true;
         }, $scope.medium);
       }
     }, $scope.speed);
   }
+
+
+
+        $scope.restaurantes = [
+          {
+            nome: 'Hortolandia III',
+            tipo: 'Self-Service',
+            local: 'perto',
+            fidelidade: true
+          },
+          {
+            nome: 'Cainelli',
+            tipo: 'A la carte',
+            local: 'perto',
+            fidelidade: false
+          },
+          {
+            nome: 'Sala Vip',
+            tipo: 'Self-Service',
+            local: 'perto',
+            fidelidade: true
+          },
+          {
+            nome: 'GR',
+            tipo: 'A la carte',
+            local: 'dentro da IBM',
+            fidelidade: false
+          },
+          {
+            nome: 'Lagoa',
+            tipo: 'A la carte',
+            local: 'longe',
+            fidelidade: true
+          },
+          {
+            nome: 'Shopping',
+            tipo: 'Praça de Alimentação',
+            local: 'longe',
+            fidelidade: false
+          }
+        ]
+
+
+    $scope.restaurantesMtg = [
+      {
+        nome: 'GR',
+        tipo: 'A la carte',
+        local: 'dentro da IBM',
+        fidelidade: false
+      },
+      {
+        nome: 'Hortolandia III',
+        tipo: 'Self-Service',
+        local: 'perto',
+        fidelidade: true
+      },
+      {
+        nome: 'Sala Vip',
+        tipo: 'Self-Service',
+        local: 'perto',
+        fidelidade: true
+      },
+      {
+        nome: 'Cainelli',
+        tipo: 'A la carte',
+        local: 'perto',
+        fidelidade: false
+      }
+    ]
+
 
   $scope.speedMenuItemClick = function(speedText) {
 

@@ -45,10 +45,10 @@ var params = {},
     context;
 
 function userMessage(message) {
-    
+
     params.text = message;
     if (context) {
-        params.context = context;    
+        params.context = context;
     }
     var xhr = new XMLHttpRequest();
     var uri = '/api/watson';
@@ -62,12 +62,14 @@ function userMessage(message) {
             context = response.context; // Store the context for next round of questions
             console.log("Got response from Watson: ", JSON.stringify(response));
             // document.getElementById('wordInput').value = text;
-            document.getElementById('po').value = context.nome;
-            document.getElementById('card-type').value = context.sabor;
-            document.getElementById('global-filters').value = context.tipo_de_massa;
-            
+            document.getElementById('po').value = context.nomes_pessoas || ' --- ';
+            document.getElementById('card-type').value = context.hora_reuniao || ' --- ';
+            document.getElementById('global-filters').value = context.humor || ' --- ';
+
+            goCheckWeather();
+
             for (var txt in text) {
-                displayMessage(text[txt], watson)                
+                displayMessage(text[txt], watson)
             }
         }
         else {
@@ -86,7 +88,7 @@ function userMessage(message) {
 function simulateKeyPress(character) {
     jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
   }
-  
+
 function newEvent(event) {
     // Only check for a return/enter press - Event 13
     if (event.which === 13 || event.keyCode === 13) {
@@ -109,6 +111,10 @@ function newEvent(event) {
             return false;
         }
     }
+}
+
+function goCheckWeather() {
+  return;
 }
 
 function displayMessage(text, user) {

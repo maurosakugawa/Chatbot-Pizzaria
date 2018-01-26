@@ -9,7 +9,7 @@ body {
 }
 
 body {
-    background-image: url(../images/transparent.png);
+    background-image: url(../images/back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -59,7 +59,7 @@ body {
         height: 40px;
     }
     to {
-        height: 75%
+        height: 67%
     }
 }
 
